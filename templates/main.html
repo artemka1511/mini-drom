@@ -1,0 +1,67 @@
+{% extends 'default.html' %}
+{% load custom_filters %}
+{% block content %}
+
+<h3 style="padding-left: 310px;">Продажа авто в России</h3>
+<a style="padding-left: 310px;margin-top: 1200px;"><span style="color: #3366ff;">
+    Новосибирск &nbsp;&nbsp;&nbsp; Омск &nbsp;&nbsp;&nbsp; Санкт-Петербург &nbsp;&nbsp;&nbsp; Москва &nbsp;&nbsp;&nbsp; Другой город...</span></a>
+
+
+<table style="width: 779.406px;">
+    <tbody>
+            <tr style="height: 300px;">
+                {% for cars in cars %}
+                    <td style="width: 320px; height: 300px;">
+                        {% for i in cars.images_set.all|slice:":1" %}
+                            <img src="{{ i.images.url }}" width="272.5px" height="205px"> <br>
+                        {% endfor %}
+                        <a href="{% url 'car_detail' cars.id %}"> {{cars.car_brand}} {{cars.car_model}} {{cars.car_year}} </a> <br> {{cars.car_city}} <br> {{cars.car_price|beautiful_price}}
+                    </td>
+                {% endfor %}
+            </tr>
+    </tbody>
+</table>
+
+<h3 style="padding-left: 310px;"> Поиск объявлений</h3>
+
+<table style="margin-left: 310px;">
+    <tbody>
+            <tr style="height: 80px;">
+                {% for b in brand|slice:":4" %}
+                    <td style="width: 250px;">
+                        <h5><img src="{{ b.brand_logo.url }}"width="50px" height="50px">   {{ b.brand_name }}</h5>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr style="height: 80px;">
+                {% for b in brand|slice:"4:8" %}
+                    <td style="width: 250px;">
+                        <h5><img src="{{ b.brand_logo.url }}"width="50px" height="50px">   {{ b.brand_name }}</h5>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr style="height: 80px;">
+                {% for b in brand|slice:"8:12" %}
+                    <td style="width: 250px;">
+                        <h5><img src="{{ b.brand_logo.url }}"width="50px" height="50px">   {{ b.brand_name }}</h5>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr style="height: 80px;">
+                {% for b in brand|slice:"12:16" %}
+                    <td style="width: 250px;">
+                        <h5><img src="{{ b.brand_logo.url }}"width="50px" height="50px">   {{ b.brand_name }}</h5>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr style="height: 80px;">
+                {% for b in brand|slice:"16:19" %}
+                    <td style="width: 250px;">
+                        <h5><img src="{{ b.brand_logo.url }}"width="50px" height="50px">   {{ b.brand_name }}</h5>
+                    </td>
+                {% endfor %}
+                <td style="width: 250px;vertical-align:top;padding-top:18px"> <h5>Показать все</h5></td>
+            </tr>
+    </tbody>
+</table>
+{% endblock content %}

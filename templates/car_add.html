@@ -1,0 +1,14 @@
+{% extends 'default.html' %}
+
+{% block content %}
+<h2 style="margin-left:310px; margin-top: 10px"> Подача объявления </h2>
+<form style="margin-left:310px;" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.media.js }}
+    {{ form.as_p }}
+    {{ form2.as_p }}
+    <input type="submit" value="Продолжить">
+</form>
+
+{% endblock content %}
+

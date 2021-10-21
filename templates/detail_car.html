@@ -1,0 +1,41 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block content %}
+{% load custom_filters %}
+<br>
+<h2 style="padding-left: 310px;">Продажа {{detail_car.car_brand}} {{detail_car.car_model}}, {{detail_car.car_year}} в {{detail_car.car_city}}</h2>
+
+<table style="width: 950px; margin-left: 310px;">
+    <tbody>
+        <tr style="height: 175px;">
+            <td style="width: 500px; height: 500px; vertical-align: top">
+                {% for i in detail_car.images_set.all %}
+                    {% if forloop.first == True %}
+                        <a data-fancybox="gallery" href="{{ i.images.url }}">
+                           <img src="{{ i.images.url }}" width="515.3px" height="379.34px" alt= "{{ i.images.url }}">
+                        </a>
+                    {% else %}
+                        <a data-fancybox="gallery" href="{{ i.images.url }}">
+                            <img style="margin-top: 4px" src="{{ i.images.url }}" width="99.55px" height="74.66px" alt ="{{ i.images.url }}">
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td style="padding-left:5px; width: 600px; height: 500px; vertical-align: top">
+                <h3>{{detail_car.car_price|beautiful_price}}</h3>
+                Двигатель: {{detail_car.get_car_engine_type_display|lower}}, {{detail_car.car_engine_capacity}} л <br>
+                Мощность: {{detail_car.car_engine_power}} л.с. <br>
+                Трансмиссия: {{detail_car.get_car_transmission_type_display|lower}} <br>
+                Привод: {{detail_car.get_car_drive_display|lower}}<br>
+                Цвет: {{detail_car.get_car_color_display|lower}}<br>
+                Пробег, км: {{detail_car.car_mileage}} <br>
+                Руль: {{detail_car.get_car_wheel_display|lower}} <br>
+                VIN код: {{detail_car.car_vin}} <br>
+                Дополнительно: {{detail_car.car_description}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+{% endblock content %}

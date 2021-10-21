@@ -1,0 +1,14 @@
+{% extends 'default.html' %}
+{% block content %}
+<br>
+<h2 style="margin-left:310px;">Регистрация</h2>
+<form style="margin-left:310px;" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <br>
+    {{ form.as_p }}
+    {{ form2.as_p }}
+    <input type="submit" value="Зарегистрироваться">
+</form>
+<br>
+<div style="margin-left:310px;"> Уже регистрировались? Тогда необходимо <a href="{% url 'login'%}"> Войти </a></div>
+{% endblock content %}

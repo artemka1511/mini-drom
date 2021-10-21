@@ -1,0 +1,31 @@
+{% extends 'default.html' %}
+{% block content %}
+{% load custom_filters %}
+<h2 style="margin-left:310px; margin-top: 10px"> Информация вашего профиля: </h2>
+<p style="margin-left:310px;">Ваш логин: {{ user.username }}</p>
+<p style="margin-left:310px;">Ваше имя: {{ user.first_name }}</p>
+<p style="margin-left:310px;">Ваша фамилия: {{ user.last_name }}</p>
+<p style="margin-left:310px;">Ваш email: {{ user.email }}</p>
+<p style="margin-left:310px;">Ваш номер телефона: {{ user.phone }}</p>
+{% if cars %}
+    <h2 style="margin-left:310px; margin-top: 10px"> Мои объявления: {{cars|length}} </h2>
+        <table style="margin-left:310px;">
+            <tr>
+                <td align="center"> Бренд: </td>
+                <td align="center"> Модель: </td>
+                <td align="center"> Год выпуска: </td>
+                <td align="center"> Цена: </td>
+            </tr>
+            {% for car in cars %}
+                <tr>
+                    <td align="center"> {{ car.car_brand}}: </td>
+                    <td align="center"> {{ car.car_model}} </td>
+                    <td align="center"> {{ car.car_year}} </td>
+                    <td align="center"> {{ car.car_price|beautiful_price}} </td>
+                </tr>
+            {% endfor %}
+        </table>
+{% else %}
+    <h2 style="margin-left:310px; margin-top: 10px"> Вы пока не добавили ни одного объявления. Давайте <a href="{% url 'add'%}"> добавим </a> </h2>
+{% endif%}
+{% endblock content %}
