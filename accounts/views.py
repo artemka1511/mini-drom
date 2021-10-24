@@ -28,6 +28,15 @@ class MyProfile(ListView):
         return context
 
 
+class SuccessfulLogin(TemplateView):
+    template_name = 'successful_login.html'
+
+
+class NeedRegistration(TemplateView):
+    template_name = 'need_registration.html'
+
+
+
 
 
 

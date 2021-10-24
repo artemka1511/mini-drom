@@ -132,6 +132,6 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_URL = 'registration'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'need_registration'
+LOGIN_REDIRECT_URL = 'success'
 USE_DJANGO_JQUERY = True

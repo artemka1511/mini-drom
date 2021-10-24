@@ -28,4 +28,5 @@
 {% else %}
     <h2 style="margin-left:310px; margin-top: 10px"> Вы пока не добавили ни одного объявления. Давайте <a href="{% url 'add'%}"> добавим </a> </h2>
 {% endif%}
+<button style="margin-left:310px;"> <a href="{% url 'logout'%}"> Выйти </a></button>
 {% endblock content %}
